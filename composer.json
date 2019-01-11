@@ -1,0 +1,14 @@
+{
+    "name": "vendor/music-search",
+    "description": "Description of project MusicSearch.",
+    "authors": [
+        {
+            "name": "MyKroft",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "madcoda/php-youtube-api": "^1.2",
+        "athlon1600/youtube-downloader": "1.0.1"
+    }
+}
