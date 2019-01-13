@@ -344,13 +344,22 @@ ob_start("ob_gzhandler");
                                     })
                                 }
                             }(), !1
-                }), $(document).on("click", ".download", function () {
-
+                }), $(document).on("click", ".download", function (ev) {
+                    ev.preventDefault();
                     var e = parseInt($(this).attr("class").split(" ")[1]),
                             r = "#result_" + e,
                             t = "#download_" + e,
                             s = $(this).attr("id").split("|");
-                    return $(t).length ? (1 == s[0] && delete i[s[1]], $(t).remove(), $(this).text("Download")) : ($(this).text("Close"), 1 == parseInt(s[0]) ? ($(r).after(p.replace(/ID/, e).replace(/CLASS/, " margin").replace(/NAME/, "name").replace(/PROGRESS/, '<span>initializing</span> <i class="fa fa-cog fa-spin"></i>').replace(/CLASS_BUTTONS/, "").replace(/URL/, "").replace(/CLASS_CLOUD/g, e)), y("#download_" + e, s[1])) : $(r).after(p.replace(/ID/, e).replace(/CLASS/, " margin").replace(/NAME/, $(r + " .name").html()).replace(/PROGRESS/, "The song is available for download - by clicking on the download button you'll start the download.").replace(/CLASS_BUTTONS/, " show").replace(/URL/, "https://" + u(d[0], "s").slice(1) + "/" + s[0] + "/" + s[1] + "/" + s[2]).replace(/CLASS_CLOUD/g, e))), !1
+                    var text = $(this).text();
+                    if (text.trim() == "Download") {
+                        $(this).text("Close");
+                        $(r).after('<div id="download_#no" class="file margin"><div class="name">#name</div><div class="progress">Please select an action to perform.</div><div class="options" style="display: block;"><a  data-id="#youtube" rel="nofollow" class="url pointer">Download audio</a><a  class="control_cloud 1 pointer">Download video</a><a class="pointer">View lyrics</a></div></div>'.replace("#no", e).replace("#name", $(r).children().first().text()).replace("#youtube", s[1]));
+                    } else if (text.trim() == "Close") {
+                        $(this).text("Download");
+                        $(r).next().remove();
+                    }
+
+
                 }), $(document).on("click", ".player", function () {
                     var e = parseInt($(this).attr("class").split(" ")[1]),
                             r = "#result_" + e,

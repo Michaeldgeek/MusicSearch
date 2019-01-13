@@ -72,3 +72,6 @@ iframe{border:none;}
     #text{width:96%;margin:60px auto 0 auto;}
     #results{width:96%;}
 }
+.pointer {
+    cursor: pointer !important;
+}
