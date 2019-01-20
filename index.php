@@ -291,17 +291,10 @@ ob_start("ob_gzhandler");
                 }), $(document).on("click", "#suggestions span", function () {
                     _("input", $("#suggestions #s_" + a).html()), $("form").submit()
                 }), $(document).on("click", ".url", function () {
-                    return $.ajax({
-                        url: "p.php",
-                        cache: !1,
-                        async: !1,
-                        data: {
-                            c: 1
-                        },
-                        success: function (e) {
-                            e && window.open("/p/")
-                        }
-                    }), !0
+                    var parent = $(this).parent().parent();
+                    parent.children().remove();
+                    parent.prepend('<span>initializing</span> <i class="fa fa-cog fa-spin"></i>');
+                    window.location.href = "http://localhost:3000";
                 }), $("form").submit(function () {
                     return g(),
                             function () {
